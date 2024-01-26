@@ -1,5 +1,7 @@
 # linked lists
 
+# frozen_string_literal: true
+
 # List Entry
 class Entry
   attr_accessor :next, :data
@@ -12,11 +14,22 @@ end
 
 # List
 class List
+  include Enumerable
   attr_accessor :name
 
   def initialize
     @head = nil
     @tail = nil
+  end
+
+  def each
+    return nil if @head.nil?
+
+    entry = @head
+    until entry.nil?
+      yield entry
+      entry = entry.next
+    end
   end
 
   def ptq(entry)
@@ -62,4 +75,19 @@ class List
 
     @head = @tmp_head
   end
+
+  def reverse
+    new_list = List.new
+    self.each { |entry| new_list.ptq(Entry.new(entry.data)) }
+    new_list
+  end
 end
+
+my_list = List.new
+
+# Add entries to the list
+my_list.ptq(Entry.new("First"))
+my_list.pbq(Entry.new("Second"))
+my_list.pbq(Entry.new("Third"))
+
+my_list.each { |entry| puts entry.data }
