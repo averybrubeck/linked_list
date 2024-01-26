@@ -38,4 +38,28 @@ class List
       @tail = entry
     end
   end
+
+  def rtq
+    return nil if @head.nil?
+
+    entry = @head
+    @head = @head.next
+    entry
+  end
+
+  def reverse!
+    return if @head.nil?
+
+    @tmp_head = self.rtq
+    @tmp_head.next = nil
+    @tail = @tmp_head
+
+    until @head.nil?
+      entry = self.rtq
+      entry.next = @tmp_head
+      @tmp_head = entry
+    end
+
+    @head = @tmp_head
+  end
 end
