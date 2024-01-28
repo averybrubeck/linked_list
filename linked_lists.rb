@@ -82,11 +82,22 @@ class List
     new_list
   end
 
-  # size return size of list
+  def size
+    return nil if @head.nil?
 
-  # head return head of list
+  end
 
-  # tail return tail of list
+  def out_head
+    return nil if @head.nil?
+
+    puts "#{@head.data}"
+  end
+
+  def out_tail
+    return nil if @tail.nil?
+
+    puts "#{@tail.data}"
+  end
 
   # at(index) returns the node at a given index
   
