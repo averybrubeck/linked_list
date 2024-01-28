@@ -84,7 +84,10 @@ class List
 
   def size
     return nil if @head.nil?
+    counter = 0
 
+    self.each { |entry| counter += 1}
+    puts "#{counter} items in the list"
   end
 
   def out_head
@@ -115,5 +118,7 @@ my_list = List.new
 my_list.ptq(Entry.new("First"))
 my_list.pbq(Entry.new("Second"))
 my_list.pbq(Entry.new("Third"))
+my_list.pbq(Entry.new("Fourth"))
 
 my_list.each { |entry| puts entry.data }
+my_list.size
