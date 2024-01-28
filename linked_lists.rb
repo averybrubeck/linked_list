@@ -102,9 +102,17 @@ class List
     puts "#{@tail.data}"
   end
 
-  # at(index) returns the node at a given index
+  def at(value)
+    return nil if @head.nil?
+
+    self.each_with_index { |entry, index| puts "#{index + 1}" if entry.data.include?(value)}
+  end
   
-  # #contains?(value) returns true if value is in list
+  def contains?(value)
+    return nil if @head.nil?
+
+    self.each { |entry| p true if entry.data.include?(value)}
+  end
 
   # find(vaule) returns index of node containing vaule, nil if not found
 
@@ -121,4 +129,4 @@ my_list.pbq(Entry.new("Third"))
 my_list.pbq(Entry.new("Fourth"))
 
 my_list.each { |entry| puts entry.data }
-my_list.size
+my_list.contains?("Second")
