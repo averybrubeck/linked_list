@@ -81,6 +81,21 @@ class List
     self.each { |entry| new_list.ptq(Entry.new(entry.data)) }
     new_list
   end
+
+  # size return size of list
+
+  # head return head of list
+
+  # tail return tail of list
+
+  # at(index) returns the node at a given index
+  
+  # #contains?(value) returns true if value is in list
+
+  # find(vaule) returns index of node containing vaule, nil if not found
+
+  # to_s represent list objects as strings and output to console
+  #  format should be (value) -> (value) -> (value) -> nil
 end
 
 my_list = List.new
