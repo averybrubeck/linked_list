@@ -105,7 +105,7 @@ class List
   def at(value)
     return nil if @head.nil?
 
-    self.each_with_index { |entry, index| puts "#{index + 1}" if entry.data.include?(value)}
+    self.each_with_index { |entry, index| puts "#{entry.data}" if index === value}
   end
   
   def contains?(value)
@@ -114,10 +114,23 @@ class List
     self.each { |entry| p true if entry.data.include?(value)}
   end
 
-  # find(vaule) returns index of node containing vaule, nil if not found
+  def find(value)
+    return nil if @head.nil?
 
-  # to_s represent list objects as strings and output to console
-  #  format should be (value) -> (value) -> (value) -> nil
+    self.each_with_index { |entry, index| puts "#{index + 1}" if entry.data.include?(value)}
+  end
+
+  def to_s
+    return nil if @head.nil?
+
+    self.each do |entry|
+      if entry == @tail
+        puts "#{entry.data} -> nil"
+      else
+        print "#{entry.data} -> "
+      end
+  end
+end
 end
 
 my_list = List.new
@@ -130,3 +143,4 @@ my_list.pbq(Entry.new("Fourth"))
 
 my_list.each { |entry| puts entry.data }
 my_list.contains?("Second")
+my_list.to_s
